@@ -1,0 +1,5 @@
+# HERE I AM CREATE FLASK APPLICATION.
+
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(__name__)
