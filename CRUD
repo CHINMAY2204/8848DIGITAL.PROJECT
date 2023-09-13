@@ -1,0 +1,16 @@
+# HERE Create routes for CRUD operations on Books and Members:
+
+@app.route('/books', methods=['GET', 'POST'])
+def books():
+    if request.method == 'POST':
+        title = request.form['title']
+        author = request.form['author']
+        isbn = request.form['isbn']
+        stock = int(request.form['stock'])
+        book = Book(title=title, author=author, isbn=isbn, stock=stock)
+        db.session.add(book)
+        db.session.commit()
+        return jsonify(success=True)
+    else:
+        books = Book.query.all()
+        return render_template('books.html', books=books)
